@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import static java.time.LocalDate.*;
 
-public class GreetingServiceTest {
+public class DoubleTest {
 
     @Rule
     public JUnitRuleMockery context = new JUnitRuleMockery();
