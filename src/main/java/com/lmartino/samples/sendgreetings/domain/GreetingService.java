@@ -18,7 +18,7 @@ public class GreetingService {
         List<Employee> employees = employeeRepository.getAllEmployees();
         for (Employee employee : employees) {
             if (hasBirthday(employee)){
-                final Message message = new Message(employee.getFirstName(), employee.getLastName());
+                final Message message = new Message(employee);
                 messageSender.sendMessage(message);
             }
 

@@ -5,8 +5,18 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Message {
 
-    public Message(String firstName, String lastName) {
+    private final String firstName;
+    private final String lastName;
+    private final String body;
 
+    public Message(Employee employee) {
+        this.firstName = employee.getFirstName();
+        this.lastName = employee.getLastName();
+        this.body = "Happy Birthday " + firstName + " " + lastName;
+    }
+
+    public String getBody() {
+        return body;
     }
 
     @Override

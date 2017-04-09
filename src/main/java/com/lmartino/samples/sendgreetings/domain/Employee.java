@@ -5,26 +5,34 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.time.LocalDate;
 
-import static java.time.LocalDate.*;
-
 public class Employee {
 
     private final LocalDate birthday;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
 
-    public Employee(LocalDate birthday) {
+    public Employee(LocalDate birthday, String firstName, String lastName, String email) {
         this.birthday = birthday;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     public String getFirstName() {
-        return null;
+        return firstName;
     }
 
     public String getLastName() {
-        return null;
+        return lastName;
     }
 
     public LocalDate getBirthday() {
         return birthday;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     @Override

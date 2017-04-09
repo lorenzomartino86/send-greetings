@@ -20,22 +20,22 @@ public class GreetingServiceTest {
     private final LocalDate testDate = of(2017, 4, 9);
 
     private GreetingService greetingService = new GreetingService(employeeRepository, messageSender, testDate);
+
     @Test
     public void sendNoGreeting() throws Exception {
-        final Message message = new Message(null, null);
-        final Employee employee = generateEmployee(of(2017, 4, 8));
+        final Employee employee = generateEmployee(of(2017, 4, 8), null, null, null);
         context.checking(new Expectations() {{
             oneOf(employeeRepository).getAllEmployees();
             will(returnValue(Arrays.asList(employee)));
         }});
 
         greetingService.send();
-}
+    }
 
     @Test
     public void sendOneGreeting() throws Exception {
-        final Message message = new Message(null, null);
-        final Employee employee = generateEmployee(this.testDate);
+        final Employee employee = generateEmployee(this.testDate, null, null, null);
+        final Message message = generateMessage(employee);
         context.checking(new Expectations() {{
             oneOf(employeeRepository).getAllEmployees();
             will(returnValue(Arrays.asList(employee)));
@@ -47,8 +47,8 @@ public class GreetingServiceTest {
 
     @Test
     public void sendMoreGreetings() throws Exception {
-        final Employee employee = generateEmployee(testDate);
-        final Message message = new Message(null, null);
+        final Employee employee = generateEmployee(testDate, null, null, null);
+        final Message message = generateMessage(employee);
         context.checking(new Expectations() {{
             oneOf(employeeRepository).getAllEmployees();
             will(returnValue(Arrays.asList(employee, employee)));
@@ -59,10 +59,13 @@ public class GreetingServiceTest {
         greetingService.send();
     }
 
-    private Employee generateEmployee(LocalDate testDate) {
-        return new Employee(testDate);
+    private Employee generateEmployee(LocalDate testDate, String firstName, String lastName, String email) {
+        return new Employee(testDate, firstName, lastName, email);
     }
 
+    private Message generateMessage(Employee employee) {
+        return new Message(employee);
+    }
 
 
 }
