@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lorenzomartino86/send-greetings.svg?branch=master)](https://travis-ci.org/lorenzomartino86/send-greetings)
 # Introduction
 A sample of application of TDD principles using test double Jmock
 
