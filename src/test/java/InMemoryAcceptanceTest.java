@@ -22,9 +22,10 @@ public class InMemoryAcceptanceTest {
     @Test
     public void sendNoGreetings() throws Exception {
         List<Employee> employees = new ArrayList<Employee>();
-        Employee employee = generateEmployee(of(1980, 4, 9), "Luigi", "Adel", "ladel@test.com");
-        employees.add(employee);
-
+        Employee employee1 = generateEmployee(of(1980, 4, 8), "Luigi", "Adel", "ladel@test.com");
+        Employee employee2 = generateEmployee(of(1981, 3, 11), "Luigi", "Adel", "ladel@test.com");
+        employees.add(employee1);
+        employees.add(employee2);
 
         final InMemoryEmployeeRepository employeeRepository = new InMemoryEmployeeRepository(employees);
         final SmtpSender messageSender = new SmtpSender("host", 25, "test@test.com");
@@ -43,7 +44,13 @@ public class InMemoryAcceptanceTest {
 
     @Test
     public void sendOneGreeting() throws Exception {
-        final InMemoryEmployeeRepository employeeRepository = new InMemoryEmployeeRepository(new ArrayList<Employee>());
+        List<Employee> employees = new ArrayList<Employee>();
+        Employee employee1 = generateEmployee(of(1980, 4, 9), "Luigi", "Adel", "ladel@test.com");
+        Employee employee2 = generateEmployee(of(1981, 3, 11), "Luigi", "Adel", "ladel@test.com");
+        employees.add(employee1);
+        employees.add(employee2);
+
+        final InMemoryEmployeeRepository employeeRepository = new InMemoryEmployeeRepository(employees);
         final SmtpSender messageSender = new SmtpSender("host", 25, "test@test.com");
         greetingService = new GreetingService(employeeRepository, messageSender, testDate);
 
