@@ -7,13 +7,13 @@ import java.time.LocalDate;
 
 public class Employee {
 
-    private final LocalDate birthday;
+    private final LocalDate dateOfBirth;
     private final String firstName;
     private final String lastName;
     private final String email;
 
-    public Employee(LocalDate birthday, String firstName, String lastName, String email) {
-        this.birthday = birthday;
+    public Employee(LocalDate dateOfBirth, String firstName, String lastName, String email) {
+        this.dateOfBirth = dateOfBirth;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -27,8 +27,8 @@ public class Employee {
         return lastName;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public String getEmail() {

@@ -1,6 +1,7 @@
 package com.lmartino.samples.sendgreetings.domain;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class GreetingService {
     public void send() {
         List<Employee> employees = employeeRepository.getAllEmployees();
         for (Employee employee : employees) {
-            if (hasBirthday(employee)){
+            if (hasBirthday(employee)) {
                 final Message message = new Message(employee);
                 messageSender.sendMessage(message);
                 sentMessages.add(message);
@@ -27,11 +28,17 @@ public class GreetingService {
 
         }
 
-
     }
 
     private boolean hasBirthday(Employee employee) {
-        return today.equals(employee.getBirthday());
+        final Month month = today.getMonth();
+        final int dayOfMonth = today.getDayOfMonth();
+
+        final LocalDate dateOfBirth = employee.getDateOfBirth();
+        final Month monthOfBirth = dateOfBirth.getMonth();
+        final int dayOfBirth = dateOfBirth.getDayOfMonth();
+
+        return (month.equals(monthOfBirth) && dayOfMonth == dayOfBirth);
     }
 
     public List<Message> getSentMessages() {

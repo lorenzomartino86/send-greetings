@@ -11,7 +11,7 @@ import static java.time.LocalDate.of;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class AcceptanceTest {
+public class FileAcceptanceTest {
 
     private GreetingService greetingService;
     private final LocalDate testDate = of(2017, 4, 9);
